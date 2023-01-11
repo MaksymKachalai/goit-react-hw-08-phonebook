@@ -15,7 +15,6 @@ export default function LoginForm() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isModal, setIsModal] = useState(true);
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +49,7 @@ export default function LoginForm() {
   return (
     <>
       {isLoggedIn && <Navigate to="/contacts" replace={true} />}
-      <Dialog open={isModal} onClose={() => navigate('/')} fullScreen={false}>
+      <Dialog open onClose={() => navigate('/')} fullScreen={false}>
         <DialogTitle>Sign Up</DialogTitle>
 
         <DialogContent>

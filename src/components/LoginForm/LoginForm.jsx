@@ -14,7 +14,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isModal, setIsModal] = useState(true);
   const isUserLoggedIn = useSelector(state => state.user.isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,7 +43,7 @@ export default function LoginForm() {
   return (
     <>
       {isUserLoggedIn && <Navigate to="/contacts" replace />}
-      <Dialog open={isModal} onClose={() => navigate('/')} fullScreen={false}>
+      <Dialog open onClose={() => navigate('/')} fullScreen={false}>
         <DialogTitle>Log In</DialogTitle>
         <DialogContent>
           <Box
