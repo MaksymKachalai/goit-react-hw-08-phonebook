@@ -1,20 +1,22 @@
 import React from 'react';
 import { setFilter } from 'redux/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
 
 const ContactsFilter = ({ value, onChange }) => {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter.value);
 
   return (
-    <label>
-      <input
-        type="text"
-        placeholder="Search contacts"
-        onChange={e => dispatch(setFilter(e.currentTarget.value))}
-        value={filter}
-      />
-    </label>
+    <TextField
+      id="text"
+      label="Search contacts"
+      value={filter}
+      margin="dense"
+      sx={{ width: '505px' }}
+      color="secondary"
+      onChange={e => dispatch(setFilter(e.currentTarget.value))}
+    />
   );
 };
 export default ContactsFilter;

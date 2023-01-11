@@ -1,6 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
-import ContactsList from './ContactsList/ContactsList';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './Layout/Layout';
+import LoginForm from './LoginForm/LoginForm';
+import Contacts from './pages/Contacts';
+import Home from './pages/Home';
+import SignupForm from './SignupForm/SignupForm';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 export const App = () => {
   return (
@@ -15,7 +19,19 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path="/" element={<Layout />}></Route>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="signup" element={<SignupForm />} />
+          <Route
+            path="contacts"
+            element={
+              <ProtectedRoute pathRoute="/">
+                <Contacts />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
       </Routes>
     </div>
   );

@@ -5,7 +5,9 @@ export default function Layout() {
   return (
     <>
       <AppNavigation />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

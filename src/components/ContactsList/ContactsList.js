@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fethcAllContacts } from 'redux/contactsSlice';
-import ContactsEditor from '../ContactsEditor/ContactsEditor';
+import { fethcAllContacts } from 'redux/ContactsOperations/ContactsOperations';
 import ContactsRendering from '../ContactsRendering/ContactsRendering';
 import ContactsFilter from '../ContactsFilter/ContactsFilter';
-import './ContactsList.css';
 import { useMemo } from 'react';
+import { Container, Box } from '@mui/material';
+import CreateNewContact from '../CreateNewContact/CreateNewContact';
 
 export default function ContactsList() {
   const contacts = useSelector(state => state.contacts.entities);
@@ -25,18 +25,15 @@ export default function ContactsList() {
   }, [contacts, filter]);
 
   return (
-    <>
-      <div className="phonebook-container">
-        <div className="login-box">
-          <h2>PhoneBook</h2>
-          <ContactsEditor />
-        </div>
+    <Container>
+      <CreateNewContact />
+      <Box>
         <div className="phonebook-box">
           <ContactsFilter />
           <ContactsRendering filterList={filteredContacts} />
         </div>
-      </div>
-    </>
+      </Box>
+    </Container>
   );
 }
 
